@@ -47,17 +47,18 @@ def filter_data(data_file, num_months, type_to_filter=None):
 # Get user input for number of months and optional type filter
 num_months = 2
 
-# Filter data and display results
-filtered_data = filter_data("latest_data.csv", num_months)
-
-if filtered_data is not None:
-
-    # filtered_df = pd.DataFrame(filtered_data)
-
-    # Create a new column to count the number of purchases for each stock
-    filtered_data['buy count'] = filtered_data['stock'].map(filtered_data['stock'].value_counts())
-    filtered_data = filtered_data.sort_values(by='stock')
-    print(filtered_data)
-    filtered_data.to_csv('report.csv', index=False)
-else:
-    print("Data processing failed. Please check for errors.")
+def main():
+    # Filter data and display results
+    filtered_data = filter_data("latest_data.csv", num_months)
+    
+    if filtered_data is not None:
+    
+        # filtered_df = pd.DataFrame(filtered_data)
+    
+        # Create a new column to count the number of purchases for each stock
+        filtered_data['buy count'] = filtered_data['stock'].map(filtered_data['stock'].value_counts())
+        filtered_data = filtered_data.sort_values(by='stock')
+        print(filtered_data)
+        filtered_data.to_csv('report.csv', index=False)
+    else:
+        print("Data processing failed. Please check for errors.")
