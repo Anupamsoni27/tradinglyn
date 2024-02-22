@@ -25,6 +25,7 @@ main_data = []
 
 def get_superstar_data(superstar_url, superstar_name):
     driver2.get(superstar_url.replace('superstar-shareholders', 'bulk-block-deals').replace('latest/', ''))
+    time.sleep(2)
     stocks = driver2.find_element(By.XPATH, '''//*[@id="bbdealTable"]/tbody''').find_elements(By.TAG_NAME, 'tr')
     count = 0
     for stock in stocks:
@@ -55,6 +56,6 @@ for page in range(0, 6):
         # if count_ss > 2:
         #     break
     driver.find_element(By.ID, 'groupTable_next').find_element(By.TAG_NAME,'a').click()
-header = ['superstar',	'stock',	'client',	'market',	'type',	'action type',	'Date',	'avg',	'count',	'change']
+header = ['stock','client','market','type','action type',	'Date',	'avg','count','change', 'superstar']
 df = pd.DataFrame(main_data)
-df.to_csv("latest_data.csv", index=False)
+df.to_csv("latest_data.csv", header=header, index=False)
