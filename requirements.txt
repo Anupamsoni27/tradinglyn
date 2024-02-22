@@ -4,3 +4,4 @@ pandas>=1.4.3
 requests>=2.28.1  # If using requests in analyze.py
 beautifulsoup4>=4.11.1  # If using Beautiful Soup in analyze.py
 lxml>=4.9.1  # If using lxml for HTML parsing in analyze.py
+streamlit>=1.31.1	
