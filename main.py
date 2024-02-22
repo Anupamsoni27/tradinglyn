@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 import pandas as pd
 from selenium.webdriver.common.by import By
+import analyze
+
 
 driver = webdriver.Chrome()
 driver2 = webdriver.Chrome()
@@ -59,3 +61,6 @@ for page in range(0, 6):
 header = ['stock','client','market','type','action type',	'Date',	'avg','count','change', 'superstar']
 df = pd.DataFrame(main_data)
 df.to_csv("latest_data.csv", header=header, index=False)
+
+time.sleep(2)
+analyze.main()
